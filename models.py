@@ -43,10 +43,10 @@ class Tag(db.Model):
     __tablename__ = 'tag'
 
     id = db.Column(db.integer, primary_key=True,)
-    name = db.Column(db.Text, nullable = False)
+    name = db.Column(db.Text, nullable = False, unique=True)
 
 class PostTag(db.Model):
     __tablename__ = 'post tags'
 
-    tag_id = db.Column(db.interger, db.foreignKey('tag.id'), primary_key = False)
-    post_id = db.Column(db.interger, db.foreignKey('post.id'), primary_key = False)
+    tag_id = db.Column(db.interger, db.foreignKey('tag.id'), primary_key = True)
+    post_id = db.Column(db.interger, db.foreignKey('post.id'), primary_key = True)
